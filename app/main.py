@@ -18,17 +18,17 @@ class BaseRobot:
         self.weight = weight
         self.coords = coords
 
-    def go_forward(self, steps: int = 1) -> None:
-        self.coords[1] += steps
+    def go_forward(self, step: int = 1) -> None:
+        self.coords[1] += step
 
-    def go_back(self, steps: int = 1) -> None:
-        self.coords[1] -= steps
+    def go_back(self, step: int = 1) -> None:
+        self.coords[1] -= step
 
-    def go_right(self, steps: int = 1) -> None:
-        self.coords[0] += steps
+    def go_right(self, step: int = 1) -> None:
+        self.coords[0] += step
 
-    def go_left(self, steps: int = 1) -> None:
-        self.coords[0] -= steps
+    def go_left(self, step: int = 1) -> None:
+        self.coords[0] -= step
 
     def get_info(self) -> str:
         return f"Robot: {self.name}, Weight: {self.weight}"
@@ -44,11 +44,11 @@ class FlyingRobot(BaseRobot):
             coords = [0, 0, 0]
         super().__init__(name, weight, coords)
 
-    def go_up(self, steps: int = 1) -> None:
-        self.coords[2] += steps
+    def go_up(self, step: int = 1) -> None:
+        self.coords[2] += step
 
-    def go_down(self, steps: int = 1) -> None:
-        self.coords[2] -= steps
+    def go_down(self, step: int = 1) -> None:
+        self.coords[2] -= step
 
 
 class DeliveryDrone(FlyingRobot):
@@ -57,7 +57,7 @@ class DeliveryDrone(FlyingRobot):
                  weight: int,
                  coords: Optional[list[int]] = None,
                  max_load_weight: int = 0,
-                 current_load: Optional[str] = None
+                 current_load: Optional[Cargo] = None
                  ) -> None:
         super().__init__(name, weight, coords)
         self.max_load_weight = max_load_weight
